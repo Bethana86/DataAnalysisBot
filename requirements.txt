@@ -1,0 +1,10 @@
+langchain
+langchain_community
+pandasai
+pandas
+ollama 
+streamlit
+groq
+langchain-groq
+python-dotenv
+scikit-learn
