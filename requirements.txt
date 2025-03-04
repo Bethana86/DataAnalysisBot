@@ -8,3 +8,5 @@ groq
 langchain-groq
 python-dotenv
 scikit-learn
+numpy
+scipy
