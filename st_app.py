@@ -54,10 +54,25 @@ if input_csvs:
     selected_file = st.selectbox("Select a CSV file", [file.name for file in input_csvs])
     selected_index = [file.name for file in input_csvs].index(selected_file)
 
-    #load and display the selected csv file 
     st.info("CSV uploaded successfully")
-    data = pd.read_csv(input_csvs[selected_index])
-    st.dataframe(data.head(3),use_container_width=True)
+data = pd.read_csv(input_csvs[selected_index])
+st.dataframe(data.head(3), use_container_width=True)
+
+# Convert the 'date' column to datetime, using NaT for parsing errors.
+data['date'] = pd.to_datetime(data['date'], errors='coerce')
+
+# Optionally fill missing dates with np.nan or a default date if needed
+# For example, you could set missing dates to a specific default date:
+# data['date'] = data['date'].fillna(pd.Timestamp("2000-01-01"))
+
+# Add 30 days to the 'date' column.
+data['date_plus_offset'] = data['date'] + timedelta(days=30)
+
+# Replace any instance of pd.NA in the entire DataFrame with np.nan
+data = data.replace({pd.NA: np.nan})
+
+# Display the updated dataframe
+st.dataframe(data.head(3), use_container_width=True))
 
     agent = Agent(data, config={
     "custom_whitelisted_dependencies": ["scikit-learn","statsmodels", "scipy", "ployfit","prophet","sklearn"]
