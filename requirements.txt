@@ -1,6 +1,6 @@
 langchain
 langchain_community
-pandasai
+pandasai==2.4.2
 pandas
 ollama 
 streamlit
@@ -9,4 +9,9 @@ langchain-groq
 python-dotenv
 scikit-learn
 numpy==1.26.4
-scipy
+scipy==1.15.0
+seaborn
+datetime
+os
+dotenv
+matplotlib
