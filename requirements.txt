@@ -3,7 +3,6 @@ langchain_community
 pandasai==2.4.2
 pandas
 prophet
-fbprophet
 ollama 
 streamlit
 groq
