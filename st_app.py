@@ -12,6 +12,7 @@ import json
 import base64 
 import prophet
 from pandasai import Agent
+import sklearn
 from statsmodels.tsa.holtwinters import SimpleExpSmoothing
 
 # Loading environment variables from .env file
@@ -40,12 +41,13 @@ st.set_page_config(layout='wide')
 # Set title for the Streamlit application
 st.title("Data Analysis ChatBot")
 
-if st.sidebar.button("Chart"):
-    image_path = "/mount/src/dataanalysisbot/exports/charts/temp_chart.png"
-    st.image(image_path, caption="Temporary Chart")
 
 # Upload multiple CSV files
 input_csvs = st.sidebar.file_uploader("Upload your CSV files", type=['csv'], accept_multiple_files=True)
+
+if st.sidebar.button("Chart"):
+    image_path = "/mount/src/dataanalysisbot/exports/charts/temp_chart.png"
+    st.image(image_path, caption="Temporary Chart")
 
 # Check if CSV files are uploaded
 if input_csvs:
@@ -59,7 +61,7 @@ if input_csvs:
     st.dataframe(data.head(3),use_container_width=True)
 
     agent = Agent(data, config={
-    "custom_whitelisted_dependencies": ["scikit-learn","statsmodels", "scipy", "ployfit","prophet"]
+    "custom_whitelisted_dependencies": ["scikit-learn","statsmodels", "scipy", "ployfit","prophet","sklearn"]
     })
 
     #Enter the query for analysis
