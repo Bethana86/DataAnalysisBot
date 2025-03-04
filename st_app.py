@@ -24,10 +24,6 @@ def chat_with_csv(df,query):
     # Function to initialize conversation chain with GROQ language model
     groq_api_key = os.environ['GROQ_API_KEY']
 
-    if st.sidebar.button("Chart"):
-    image_path = "/mount/src/dataanalysisbot/exports/charts/temp_chart.png"
-    st.image(image_path, caption="Temporary Chart")
-
     # Initializing GROQ chat with provided API key, model name, and settings
     llm = ChatGroq(
     groq_api_key=groq_api_key, model_name="deepseek-r1-distill-qwen-32b",
@@ -42,6 +38,10 @@ def chat_with_csv(df,query):
 st.set_page_config(layout='wide')
 # Set title for the Streamlit application
 st.title("Data Analysis ChatBot")
+
+if st.sidebar.button("Chart"):
+    image_path = "/mount/src/dataanalysisbot/exports/charts/temp_chart.png"
+    st.image(image_path, caption="Temporary Chart")
 
 # Upload multiple CSV files
 input_csvs = st.sidebar.file_uploader("Upload your CSV files", type=['csv'], accept_multiple_files=True)
@@ -58,7 +58,7 @@ if input_csvs:
     st.dataframe(data.head(3),use_container_width=True)
 
     agent = Agent(data, config={
-    "custom_whitelisted_dependencies": ["scikit-learn","statsmodels", "scipy"]
+    "custom_whitelisted_dependencies": ["scikit-learn","statsmodels", "scipy", "ployfit"]
     })
 
     #Enter the query for analysis
