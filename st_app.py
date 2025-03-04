@@ -59,9 +59,6 @@ if st.sidebar.button("Charts"):
     for image_path, caption in chart_images[:5]:
         st.image(image_path, caption=caption)
     
-    for image_path, caption in chart_images:
-        st.image(image_path, caption=caption)
-
 # Check if CSV files are uploaded
 if input_csvs:
     # Select a CSV file from the uploaded files using a dropdown menu
