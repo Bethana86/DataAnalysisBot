@@ -45,8 +45,15 @@ st.title("Data Analysis ChatBot")
 input_csvs = st.sidebar.file_uploader("Upload your CSV files", type=['csv'], accept_multiple_files=True)
 
 if st.sidebar.button("Chart"):
-    image_path = "/mount/src/dataanalysisbot/exports/charts/temp_chart.png"
-    st.image(image_path, caption="Temporary Chart")
+    # List of tuples containing (image path, caption)
+    chart_images = [
+        ("/mount/src/dataanalysisbot/exports/charts/temp_chart.png", "Temporary Chart"),
+        ("/mount/src/dataanalysisbot/exports/charts/chart2.png", "Chart 2"),
+        ("/mount/src/dataanalysisbot/exports/charts/chart3.png", "Chart 3"),
+    ]
+    
+    for image_path, caption in chart_images:
+        st.image(image_path, caption=caption)
 
 # Check if CSV files are uploaded
 if input_csvs:
