@@ -10,7 +10,6 @@ import os
 from datetime import timedelta
 import json
 import base64 
-from prophet import prophet
 from pandasai import Agent
 import sklearn
 from statsmodels.tsa.holtwinters import SimpleExpSmoothing
