@@ -44,21 +44,7 @@ st.title("Data Analysis ChatBot")
 # Upload multiple CSV files
 input_csvs = st.sidebar.file_uploader("Upload your CSV files", type=['csv'], accept_multiple_files=True)
 
-if st.sidebar.button("Charts"):
-    # List of tuples containing (image path, caption)
-    chart_images = [
-        ("/mount/src/dataanalysisbot/exports/charts/temp_chart.png", "Temporary Chart"),
-        ("/mount/src/dataanalysisbot/exports/charts/chart2.png", "Chart 2"),
-        ("/mount/src/dataanalysisbot/exports/charts/chart3.png", "Chart 3"),
-        ("/mount/src/dataanalysisbot/exports/charts/chart4.png", "Chart 4"),
-        ("/mount/src/dataanalysisbot/exports/charts/chart5.png", "Chart 5"),
-        # Additional charts can be added here if needed
-    ]
-    
-    # Limit to a maximum of 5 charts
-    for image_path, caption in chart_images[:5]:
-        st.image(image_path, caption=caption)
-    
+  
 # Check if CSV files are uploaded
 if input_csvs:
     # Select a CSV file from the uploaded files using a dropdown menu
@@ -99,7 +85,20 @@ st.dataframe(data.head(3), use_container_width=True))
             st.info("My Query: "+ input_text)
             result = chat_with_csv(data,input_text)
             st.success(result)
-
+  if st.sidebar.button("Charts"):
+    # List of tuples containing (image path, caption)
+    chart_images = [
+        ("/mount/src/dataanalysisbot/exports/charts/temp_chart.png", "Temporary Chart"),
+        ("/mount/src/dataanalysisbot/exports/charts/chart2.png", "Chart 2"),
+        ("/mount/src/dataanalysisbot/exports/charts/chart3.png", "Chart 3"),
+        ("/mount/src/dataanalysisbot/exports/charts/chart4.png", "Chart 4"),
+        ("/mount/src/dataanalysisbot/exports/charts/chart5.png", "Chart 5"),
+        # Additional charts can be added here if needed
+    ]
+    
+    # Limit to a maximum of 5 charts
+    for image_path, caption in chart_images[:5]:
+        st.image(image_path, caption=caption)
 
 
 
