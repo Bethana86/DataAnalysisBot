@@ -24,6 +24,7 @@ def chat_with_csv(df,query):
     # Function to initialize conversation chain with GROQ language model
     groq_api_key = os.environ['GROQ_API_KEY']
 
+    if st.sidebar.button("Chart"):
     image_path = "/mount/src/dataanalysisbot/exports/charts/temp_chart.png"
     st.image(image_path, caption="Temporary Chart")
 
