@@ -10,7 +10,7 @@ import os
 from datetime import timedelta
 import json
 import base64 
-import prophet
+from prophet import Prophet
 from pandasai import Agent
 import sklearn
 from statsmodels.tsa.holtwinters import SimpleExpSmoothing
@@ -61,7 +61,7 @@ if input_csvs:
     st.dataframe(data.head(3),use_container_width=True)
 
     agent = Agent(data, config={
-    "custom_whitelisted_dependencies": ["scikit-learn","statsmodels", "scipy", "ployfit","prophet","sklearn", "fbprophet"]
+    "custom_whitelisted_dependencies": ["scikit-learn","statsmodels", "scipy", "ployfit","prophet","sklearn"]
     })
 
     #Enter the query for analysis
