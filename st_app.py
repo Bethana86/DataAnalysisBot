@@ -11,6 +11,7 @@ from datetime import timedelta
 import json
 import base64
 from pandasai import Agent
+from statsmodels.tsa.holtwinters import SimpleExpSmoothing
 
 # Loading environment variables from .env file
 load_dotenv() 
