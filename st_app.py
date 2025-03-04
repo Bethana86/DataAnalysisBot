@@ -11,7 +11,6 @@ from datetime import timedelta
 import json
 import base64 
 import prophet
-import fbprophet
 from pandasai import Agent
 import sklearn
 from statsmodels.tsa.holtwinters import SimpleExpSmoothing
