@@ -99,26 +99,24 @@ st.dataframe(data.head(3), use_container_width=True))
     # Limit to a maximum of 5 charts
     for image_path, caption in chart_images[:5]:
         st.image(image_path, caption=caption)
-def hide_streamlit_logo():
-    # Hide the "hosted with Streamlit" logo
+
+def hide_streamlit_and_github_logos():
     hide_css = """
     <style>
-    #MainMenu {visibility: hidden;}
-    footer {visibility: hidden;}
+        /* Hide the hamburger menu */
+        #MainMenu {visibility: hidden;}
+        /* Hide the header */
+        header {visibility: hidden;}
+        /* Hide the footer (including "Made with Streamlit" and any GitHub links) */
+        footer {visibility: hidden;}
+        /* Alternatively, if you want to remove only the links in the footer, use:
+        footer a {display: none !important;}
+        */
     </style>
     """
     st.markdown(hide_css, unsafe_allow_html=True)
 
-    hide_streamlit_logo()
-    
-hide_st_style = """
-            <style>
-            #MainMenu {visibility: hidden;}
-            footer {visibility: hidden;}
-            header {visibility: hidden;}
-            </style>
-            """
-st.markdown(hide_st_style, unsafe_allow_html=True)
+hide_streamlit_and_github_logos()
 
 
 
