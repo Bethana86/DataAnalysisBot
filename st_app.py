@@ -100,6 +100,15 @@ st.dataframe(data.head(3), use_container_width=True))
     for image_path, caption in chart_images[:5]:
         st.image(image_path, caption=caption)
 
+hide_st_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            header {visibility: hidden;}
+            </style>
+            """
+st.markdown(hide_st_style, unsafe_allow_html=True)
+
 
 
      
