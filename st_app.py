@@ -99,16 +99,6 @@ st.dataframe(data.head(3), use_container_width=True))
     # Limit to a maximum of 5 charts
     for image_path, caption in chart_images[:5]:
         st.image(image_path, caption=caption)
-
-hide_st_style = """
-            <style>
-            #MainMenu {visibility: hidden;}
-            footer {visibility: hidden;}
-            header {visibility: hidden;}
-            </style>
-            """
-st.markdown(hide_st_style, unsafe_allow_html=True)
-
 def hide_streamlit_logo():
     # Hide the "hosted with Streamlit" logo
     hide_css = """
@@ -120,6 +110,16 @@ def hide_streamlit_logo():
     st.markdown(hide_css, unsafe_allow_html=True)
 
     hide_streamlit_logo()
+    
+hide_st_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            header {visibility: hidden;}
+            </style>
+            """
+st.markdown(hide_st_style, unsafe_allow_html=True)
+
 
 
 
