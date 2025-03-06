@@ -71,7 +71,7 @@ data = data.replace({pd.NA: np.nan})
 # Display the updated dataframe
 st.dataframe(data.head(3), use_container_width=True)
 
-agent = Agent(data, config={
+    agent = Agent(data, config={
     "custom_whitelisted_dependencies": ["scikit-learn","statsmodels", "scipy", "ployfit","prophet","sklearn"]
     })
 
