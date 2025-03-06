@@ -27,7 +27,7 @@ def chat_with_csv(df,query):
 
     # Initializing GROQ chat with provided API key, model name, and settings
     llm = ChatGroq(
-    groq_api_key=groq_api_key, model_name="deepseek-r1-distill-qwen-32b",
+    groq_api_key=groq_api_key, model_name="llama-3.3-70b-versatile",
     temperature=0.0)
     # Initialize SmartDataframe with DataFrame and LLM configuration
     pandas_ai = SmartDataframe(df, config={"llm": llm})
