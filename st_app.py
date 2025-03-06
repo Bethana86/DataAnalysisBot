@@ -9,12 +9,8 @@ from dotenv import load_dotenv
 import os
 from datetime import timedelta
 import json
-import base64 
+import base64
 from pandasai import Agent
-import sklearn
-from statsmodels.tsa.holtwinters import SimpleExpSmoothing
-import pandas as pd
-
 
 # Loading environment variables from .env file
 load_dotenv() 
@@ -42,13 +38,8 @@ st.set_page_config(layout='wide')
 # Set title for the Streamlit application
 st.title("Data Analysis ChatBot")
 
-
 # Upload multiple CSV files
 input_csvs = st.sidebar.file_uploader("Upload your CSV files", type=['csv'], accept_multiple_files=True)
-
-if st.sidebar.button("Chart"):
-    image_path = "/mount/src/dataanalysisbot/exports/charts/temp_chart.png"
-    st.image(image_path, caption="Temporary Chart")
 
 # Check if CSV files are uploaded
 if input_csvs:
@@ -59,10 +50,10 @@ if input_csvs:
     #load and display the selected csv file 
     st.info("CSV uploaded successfully")
     data = pd.read_csv(input_csvs[selected_index])
-        st.dataframe(data.head(3),use_container_width=True)
-   
+    st.dataframe(data.head(3),use_container_width=True)
+
     agent = Agent(data, config={
-    "custom_whitelisted_dependencies": ["scikit-learn","statsmodels", "scipy", "ployfit","sklearn"]
+    "custom_whitelisted_dependencies": ["scikit-learn","statsmodels", "scipy"]
     })
 
     #Enter the query for analysis
@@ -75,34 +66,7 @@ if input_csvs:
             st.info("My Query: "+ input_text)
             result = chat_with_csv(data,input_text)
             st.success(result)
-    
-        if st.sidebar.button("Charts"):
-        # List of tuples containing (image path, caption)
-            chart_images = [
-        ("/mount/src/dataanalysisbot/exports/charts/temp_chart.png", "Temporary Chart"),
-        ("/mount/src/dataanalysisbot/exports/charts/chart2.png", "Chart 2"),
-        ("/mount/src/dataanalysisbot/exports/charts/chart3.png", "Chart 3"),
-        ("/mount/src/dataanalysisbot/exports/charts/chart4.png", "Chart 4"),
-        ("/mount/src/dataanalysisbot/exports/charts/chart5.png", "Chart 5"),
-        # Additional charts can be added here if needed
-        ]
-    
-    def hide_streamlit_and_github_logos():
-        hide_css = """
-        <style>
-        /* Hide the hamburger menu */
-        #MainMenu {visibility: hidden;}
-        /* Hide the header */
-        header {visibility: hidden;}
-        /* Hide the footer (including "Made with Streamlit" and any GitHub links) */
-        footer {visibility: hidden;}
-        /* Alternatively, if you want to remove only the links in the footer, use:
-        footer a {display: none !important;}
-        */
-        </style>
-        """
-        st.markdown(hide_css, unsafe_allow_html=True)
-        hide_streamlit_and_github_logos()
+
 
 
 
