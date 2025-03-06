@@ -115,8 +115,7 @@ def hide_streamlit_and_github_logos():
     </style>
     """
     st.markdown(hide_css, unsafe_allow_html=True)
-
-hide_streamlit_and_github_logos()
+    hide_streamlit_and_github_logos()
 
 
 
