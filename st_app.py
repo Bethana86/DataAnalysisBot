@@ -59,7 +59,7 @@ if input_csvs:
     #load and display the selected csv file 
     st.info("CSV uploaded successfully")
     data = pd.read_csv(input_csvs[selected_index])
-    st.dataframe(data.head(3),use_container_width=True)
+        st.dataframe(data.head(3),use_container_width=True)
    
     agent = Agent(data, config={
     "custom_whitelisted_dependencies": ["scikit-learn","statsmodels", "scipy", "ployfit","sklearn"]
