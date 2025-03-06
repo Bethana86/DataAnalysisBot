@@ -69,9 +69,9 @@ data['date_plus_offset'] = data['date'] + timedelta(days=30)
 data = data.replace({pd.NA: np.nan})
 
 # Display the updated dataframe
-st.dataframe(data.head(3), use_container_width=True))
+st.dataframe(data.head(3), use_container_width=True)
 
-    agent = Agent(data, config={
+agent = Agent(data, config={
     "custom_whitelisted_dependencies": ["scikit-learn","statsmodels", "scipy", "ployfit","prophet","sklearn"]
     })
 
@@ -115,7 +115,7 @@ def hide_streamlit_and_github_logos():
     </style>
     """
     st.markdown(hide_css, unsafe_allow_html=True)
-    hide_streamlit_and_github_logos()
+hide_streamlit_and_github_logos()
 
 
 
